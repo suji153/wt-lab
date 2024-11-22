@@ -1,0 +1,58 @@
+A) Validate the Registration, User Login, User Profile, and Payment by Credit Card Pages Using JavaScript
+AIM:
+To validate web pages for user registration, login, profile updates, and payment by credit card using JavaScript.
+
+DESCRIPTION:
+Validation ensures that users enter valid and required data before submission. JavaScript is used for client-side form validation, checking fields like email format, password strength, and credit card numbers.
+code:
+
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Form Validation</title>
+</head>
+<body>
+    <!-- Registration Form -->
+    <form id="registrationForm">
+        Name: <input type="text" id="name" required><br>
+        Email: <input type="email" id="email" required><br>
+        Password: <input type="password" id="password" required><br>
+        <button type="button" onclick="validateRegistration()">Register</button>
+    </form>
+
+    <!-- Payment Form -->
+    <form id="paymentForm">
+        Credit Card Number: <input type="text" id="ccNumber" required><br>
+        Expiry Date: <input type="month" id="expiryDate" required><br>
+        <button type="button" onclick="validatePayment()">Pay</button>
+    </form>
+
+    <script>
+        // Registration Validation
+        function validateRegistration() {
+            const name = document.getElementById("name").value;
+            const email = document.getElementById("email").value;
+            const password = document.getElementById("password").value;
+
+            if (name && email.includes("@") && password.length >= 6) {
+                alert("Registration Successful!");
+            } else {
+                alert("Please fill all fields correctly.");
+            }
+        }
+
+        // Payment Validation
+        function validatePayment() {
+            const ccNumber = document.getElementById("ccNumber").value;
+            const expiryDate = document.getElementById("expiryDate").value;
+
+            if (/^\d{16}$/.test(ccNumber) && expiryDate) {
+                alert("Payment Successful!");
+            } else {
+                alert("Invalid Credit Card Details.");
+            }
+        }
+    </script>
+</body>
+</html>
+
